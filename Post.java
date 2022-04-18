@@ -1,16 +1,14 @@
 public class Post {
+  String nombre;
+  String hora;
   String titulo;
   String contenido;
-  Usuario autor;
-  int likes;
-  int dislikes;
 
   // contructor
-  public Post(String titulo, String contenido, Usuario autor) {
+  public Post(String nombre, String hora, String titulo, String contenido) {
+    this.nombre = nombre;
+    this.hora = hora;
     this.titulo = titulo;
     this.contenido = contenido;
-    this.autor = autor;
-    this.likes = 0;
-    this.dislikes = 0;
   }
 }
