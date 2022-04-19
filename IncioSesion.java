@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.File;
 
 public class IncioSesion {
   // constructor
@@ -16,6 +18,17 @@ public class IncioSesion {
   else{
 System.out.println("Introduce una respuesta valida por favor");
   }
+  }
+  public void registro(){
+    Scanner read = new Scanner(System.in);
+File file;
+FileWriter write;
+int nombre;
+String Posts ="./Documentos/Posts.daniel";
+String Users ="./Documentos/Users.daniel";
+System.out.println("Por favor introduce el nombre de usuario");
+
+
   }
   
 
