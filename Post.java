@@ -37,7 +37,7 @@ public class Post {
   
     
 
-    public void Addposts(Post publicar) throws IOException{
+    public void Addposts() throws IOException{
         fw = new FileWriter(file,true);
         fw.write(nombre + "%");
         fw.write(hora + "%");
