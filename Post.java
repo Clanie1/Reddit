@@ -38,13 +38,11 @@ public class Post {
     
 
     public void Addposts(Post publicar) throws IOException{
-        Post P = new Post("a","b","c","d");
         fw = new FileWriter(file,true);
-        scn = new Scanner(System.in);
-        fw.write(P.nombre + "%");
-        fw.write(P.hora + "%");
-        fw.write(P.titulo +"%");
-        fw.write(P.contenido +"%");
+        fw.write(nombre + "%");
+        fw.write(hora + "%");
+        fw.write(titulo +"%");
+        fw.write(contenido +"%");
         //Recibe post y con fw saca los .nombre.hora.etc y despues les agrega "%"
         
         fw.close();
