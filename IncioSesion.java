@@ -31,10 +31,11 @@ public void registro() throws FileNotFoundException ,IOException{
 
   System.out.println("Por favor introduce el nombre de usuario");
   nombre = read.nextLine();
-  write.write(nombre);
+  write.write(nombre+"%");
   System.out.println("Por favor crea una contraseña");
   password = read.nextLine();
   write.write(password);
+
   write.close();
 
 
