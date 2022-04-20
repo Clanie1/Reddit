@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -60,21 +61,22 @@ public class postAdmin {
     return postCargado;
   }
 
-  public int option() throws FileNotFoundException {
+  public int option() throws FileNotFoundException, IOException {
     Scanner scanner = new Scanner(System.in);
     System.out.println("1. Ver nuevo post");
-    System.out.println("2. Salir");
-    System.out.println("3. Inicias sesion");
+    System.out.println("2. Inicias sesion");
+    System.out.println("3. Salir ");
     int option = scanner.nextInt();
     switch (option) {
       case 1:
         System.out.println("\n \n \n \n \n \n \n \n");
         return 1;
       case 2:
-        System.out.println("Adios");
+        System.out.println("Inicias sesion");
+        IncioSesion Inicio = new IncioSesion();
         return 2;
       case 3:
-        System.out.println("Inicias sesion");
+        System.out.println("Adios");
         return 3;
       default:
         System.out.println("Opcion no valida");
