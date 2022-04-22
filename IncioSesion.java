@@ -8,78 +8,65 @@ public class IncioSesion {
 
   String Posts = "./Documentos/Posts.daniel";
   String Users = "./Documentos/Users.daniel";
+  File Userinfo = new File(Users);
 
   // constructor
-  public IncioSesion() throws FileNotFoundException, IOException {
+  public Usuario Inicio() throws FileNotFoundException, IOException {
     String res;
     Scanner read = new Scanner(System.in);
     System.out.println("Ya estas registrado?");
     res = read.nextLine();
     if (res.equals("Si") || res.equals("si") || res.equals("S") || res.equals("s")) {
-      // login()
+      return login();
     } else if (res.equals("No") || res.equals("no") || res.equals("N") || res.equals("n")) {
       registro();
+      System.out.println("Ahora inicia sesion \n");
+      return login();
     } else {
-      System.out.println("Introduce una respuesta valida por favor");
+      System.out.println("Respuesta no valida \n\n");
+      return new Usuario("", "");
     }
   }
 
+  // Registra los datos que da el usuario
   public void registro() throws FileNotFoundException, IOException {
     String Users = "./Documentos/Users.daniel";
-    File Userinfo = new File(Users);
+
     Scanner read = new Scanner(System.in);
-    FileWriter write = new FileWriter(Userinfo);
+    FileWriter write = new FileWriter(Userinfo, true);
     String nombre;
     String password;
-
     System.out.println("Por favor introduce el nombre de usuario");
     nombre = read.nextLine();
-    write.write(nombre + "%");
+    write.append(nombre + "%");
     System.out.println("Por favor crea una contraseña");
     password = read.nextLine();
-    write.write(password);
+    write.write(password + "\n");
 
     write.close();
-
+    System.out.println("\nGracias por registrate");
   }
 
-  }
-
-  public void registro(){
-
-    Scanner read = new Scanner(System.in);
-
-
-    File file;
-    FileWriter write;
-
-
+  public Usuario login() throws FileNotFoundException, IOException {
     String nombre;
-    String contraseña;
-    do{
-    System.out.println("Por favor introduce el nombre de usuario");
-    nombre = read.nextLine();
-
-
-    System.out.println("Por favor introduce la contraseña");
-    contraseña = read.nextLine();
-
-    File file2 = new File(Users);
-    Scanner scannerFile = new Scanner(file2);
-
-
-
-    
-
-    while(scannerFile.hasNext() == true){
-      String linea = scannerFile.nextLine();
-      String[] line = linea.split("%");
-      String nombreRegistrado = line[0];
-      String contraRegistrada = line[1];
-      if(nombre.equals(nombreRegistrado)&&(contraseña.equals(contraRegistrada))){
-        System.out.println("INICIO EXITOSO");
-        break;
+    String password;
+    Scanner scanner = new Scanner(System.in);
+    while (true) {
+      Scanner scannerFile = new Scanner(Userinfo);
+      System.out.println("Por favor introduce el nombre de usuario");
+      nombre = scanner.nextLine();
+      System.out.println("Por favor introduce tu contraseña");
+      password = scanner.nextLine();
+      Usuario user = new Usuario(nombre, password);
+      while (scannerFile.hasNextLine()) {
+        String[] userInfo = scannerFile.nextLine().split("%");
+        if (user.username.equals(userInfo[0]) && user.password.equals(userInfo[1])) {
+          System.out.println("Gracias por hace log in!!\n\n\n");
+          return user;
+        }
       }
+      System.out.println("No se encontro el usuario, Vuelva a intentarlo \n\n\n");
     }
-  } while();
+  }
+
 }
